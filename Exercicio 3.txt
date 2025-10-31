@@ -1,0 +1,46 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Double> notas = new ArrayList<>();
+        double nota;
+
+        System.out.println("Digite as notas (-1 para encerrar):");
+        while (true) {
+            nota = sc.nextDouble();
+            if (nota == -1) break;
+            notas.add(nota);
+        }
+
+        int quantidade = notas.size();
+        System.out.println("\nQuantidade de notas: " + quantidade);
+
+        System.out.print("Notas na ordem informada: ");
+        for (double n : notas) {
+            System.out.print(n + " ");
+        }
+
+        System.out.println("\n\nNotas na ordem inversa:");
+        for (int i = notas.size() - 1; i >= 0; i--) {
+            System.out.println(notas.get(i));
+        }
+
+        double soma = 0;
+        for (double n : notas) soma += n;
+        double media = soma / quantidade;
+
+        int acimaMedia = 0, abaixoSete = 0;
+        for (double n : notas) {
+            if (n > media) acimaMedia++;
+            if (n < 7) abaixoSete++;
+        }
+
+        System.out.println("\nSoma das notas: " + soma);
+        System.out.println("Média das notas: " + media);
+        System.out.println("Notas acima da média: " + acimaMedia);
+        System.out.println("Notas abaixo de 7: " + abaixoSete);
+        System.out.println("Programa encerrado. Obrigado!");
+    }
+}
